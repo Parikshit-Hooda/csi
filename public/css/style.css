@@ -1,0 +1,65 @@
+  @keyframes blink {
+      0% {
+          opacity: 1;
+      }
+      50% {
+          opacity: 0;
+      }
+      100% {
+          opacity: 1;
+      }
+  }
+
+  #heart {
+      animation: blink 1s;
+      animation-iteration-count: infinite;
+  }
+
+  #login-btn {
+      margin-left: 10px;
+  }
+  /*#ctact-front{width:100%;}*/
+
+  #ctact-front-head {
+      margin-left: 20%;
+  }
+
+  #signup-btn {
+      padding-left: 10px;
+  }
+/*
+  #f-carousel {
+      height: 30vh;
+  }*/
+  /*#sign-id{
+    margin:auto;
+  }*/
+  /* body {
+      display: flex;
+      min-height: 100vh;
+      flex-direction: column;
+  }
+
+  main {
+      flex: 1 0 auto;
+  }
+   */
+
+  #front-nav {
+      padding-bottom: 20px;
+  }
+
+  #car-sec{height:90vh;}
+
+  #who_we_are{width:100%;
+  height:90vh;
+margin:auto;}
+  /*#activities{width:90vw}*/
+
+  #front-car{margin-bottom:20px;}
+
+  #ls-head{
+    font-family: 'Archivo Black', sans-serif;
+  }
+
+  #csi-dtu-bl-c{margin-left:390px;}
