@@ -52,7 +52,7 @@
   #car-sec{height:90vh;}
 
   #who_we_are{width:100%;
-  height:90vh;
+  height:50vh;
 margin:auto;}
   /*#activities{width:90vw}*/
 
@@ -62,4 +62,4 @@ margin:auto;}
     font-family: 'Archivo Black', sans-serif;
   }
 
-  #csi-dtu-bl-c{margin-left:390px;}
+  #csi-dtu-bl-c{margin-left:200px;}
