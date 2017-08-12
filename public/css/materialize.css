@@ -4269,7 +4269,7 @@ nav .brand-logo {
   color: #fff;
   display: inline-block;
   font-size: 2.1rem;
-  padding: 0;
+  padding-left: 20px;
 }
 
 nav .brand-logo.center {
