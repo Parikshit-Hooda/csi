@@ -63,3 +63,22 @@ margin:auto;}
   }
 
   #csi-dtu-bl-c{margin-left:200px;}
+
+/*#about-us-head{
+  position:fixed;
+  width:100%;
+  margin:0px auto;
+}*/
+
+#about-us-content{
+  height:80vh;
+  overflow-y:auto;
+}
+
+html {
+  overflow:   scroll;
+}
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
+}
