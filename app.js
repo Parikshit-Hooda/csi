@@ -12,30 +12,28 @@ var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var logger = require('morgan');
-// var methodOverride = require('method-override');
+//var methodOverride = require('method-override');
 mongoose.connect('mongodb://localhost/csi');
 var db = mongoose.connection;
 
 //routes
 var routes = require('./routes/index');
 var users=require('./routes/users');
-// var blogs = require('./routes/blogs');
+var blogs = require('./routes/blogs');
+var categories = require('./routes/categories');
 
 //init app
 var app=express();
 
-// app.use(express.methodOverride());
+//app.use(express.methodOverride());
 
 //date formatter
 app.locals.moment = require('moment');
-//
-// app.locals.truncateText = function(text, length){
-//   var truncateText = text.substring(0, length);
-//   return truncateText;
-// }
 
-
-
+ app.locals.truncateText = function(text, length){
+   var truncateText = text.substring(0, length);
+   return truncateText;
+ }
 
 app.set('views', path.join(__dirname,'views'));
 app.engine('handlebars', exphbs({defaultLayout:'layout'}));
@@ -60,7 +58,6 @@ app.use(session({
 //passport init
 app.use(passport.initialize());
 app.use(passport.session());
-
 
 //express validator
 app.use(expressValidator({
@@ -100,7 +97,8 @@ app.use(function(req,res,next){
 
 app.use('/', routes);
 app.use('/users', users);
-// app.use('/blog', blogs);
+app.use('/blogs', blogs);
+app.use('/categories', categories);
 
 app.post('/contact', function(req,res){
   var api_key = 'key-bad93b6b64b2c4edeef5ea0d3180bc38';
@@ -162,7 +160,6 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
-
   // render the error page
   res.status(err.status || 500);
   res.render('error');

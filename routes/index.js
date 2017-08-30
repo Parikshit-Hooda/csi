@@ -32,6 +32,11 @@ router.get('/new-mem-reg', function(req,res){
   });
 });
 
+router.get('/blog', function(req,res){
+  res.render('blog', {
+    'title':'Blog'
+  });
+});
 
 // function ensureAuthenticated(req,res,next){
 //   if(req.isAuthenticated()){

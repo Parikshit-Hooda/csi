@@ -34,21 +34,25 @@
         <li><a href='/'>Home</a></li>
         <li><a href='/about_us'>About</a></li>
         <li><a href='/new-mem-reg'>Members Registration</a></li>
-        <li><a href="http://csi-dtu.blogspot.in">Blog</a></li>
-        <!-- {{#if user}}
+        <li><a href="/blog">Blog</a></li>
+        {{#if user}}
         <li><a href='/users/logout'>Logout</a></li>
         {{else}}
-        <li><a href='#'>Login</a></li>
-        <li><a href="#">Signup</a></li>
-        {{/if}} -->
+        <li><a href='/users/login'>Login</a></li>
+        <li><a href="/users/signup">Signup</a></li>
+        {{/if}}
       </ul>
       <ul class="side-nav" id="mobile-demo">
         <li><a href='/'>Home</a></li>
         <li><a href='/about_us'>About</a></li>
         <li><a href='/new-mem-reg'>Members Registration</a></li>
-        <li><a href="http://csi-dtu.blogspot.in">Blog</a></li>
-        <!-- <li><a href="#">Login</a></li> -->
-        <!-- <li><a href="#">Signup</a></li> -->
+        <li><a href="/blog">Blog</a></li>
+        {{#if user}}
+        <li><a href='/users/logout'>Logout</a></li>
+        {{else}}
+        <li><a href="/users/login">Login</a></li>
+        <li><a href="/users/signup">Signup</a></li>
+        {{/if}}
       </ul>
     </div>
   </nav>

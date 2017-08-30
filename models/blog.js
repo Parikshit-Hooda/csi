@@ -12,20 +12,18 @@ var BlogSchema = new Schema({
   },
   author:{
     type:String,
-    required:true
-    // default:"username"
+    required:true,
+    default:"anonymous"
   },
 date:{
   type:Date,
-default:Date.now
+  default:Date.now
 },
-
 category:{
   type:String,
   required:true
 }
-
 });
 
 
-var Post = module.exports = mongoose.model('Post', BlogSchema);
+var Blog = module.exports = mongoose.model('Blog', BlogSchema);

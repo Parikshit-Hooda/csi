@@ -1,37 +1,37 @@
 {
   "name": "csi",
   "version": "1.0.0",
-  "private":"true",
+  "private": "true",
   "description": "csi-dtu website",
   "main": "app.js",
   "dependencies": {
     "all": "^0.0.0",
     "bcryptjs": "^2.4.3",
+    "connect-flash": "*",
+    "express": "*",
+    "express-handlebars": "*",
     "express-messages": "*",
     "express-validator": "^3.2.0",
+    "mailgun-js": "latest",
     "method-override": "^2.3.9",
+    "mongodb": "*",
+    "mongoose": "*",
+    "morgan": "*",
     "multer": "*",
     "passport-http": "*",
     "passport-local": "*",
-    "serve-favicon":"*",
-    "path":"*",
-    "express":"*",
-    "express-handlebars":"*",
-    "mongodb":"*",
-    "mongoose":"*",
-    "morgan":"*",
-    "connect-flash":"*",
-    "mailgun-js":"latest"
+    "path": "*",
+    "serve-favicon": "*"
   },
   "devDependencies": {},
   "scripts": {
-    "start":"node app",
+    "start": "node app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Parikshit",
   "license": "ISC",
-  "engines":{
-    "node":"v6.11.1",
-    "npm":"3.10.10"
+  "engines": {
+    "node": "v6.11.1",
+    "npm": "3.10.10"
   }
 }
