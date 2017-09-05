@@ -2,35 +2,42 @@
 <ul class='errors'>
    {{#if errors}}
    {{#each errors}}
-   <li class='card-panel red lighten-3'> {{error.msg}} </li>
+   <li class='card-panel red lighten-3'> {{msg}} </li>
+   {{/each}}
+   {{/if}}
 </ul>
-<form method='post' action='/blog/add'>
+<form method='POST' action='/routes/blogs/add'>
    <div class="input-field col s6">
       <input placeholder="Title" id="title" type="text" class="validate" required>
       <label for="title">Title of Blog</label>
    </div>
    <div class="input-field col s12">
       <select required>
-         <option value="" disabled selected>Choose your option</option>
-         <option value="1">Technology</option>
+         <option value="" disabled selected>Choose your option</option>          
+          {{#if categories}}
+          {{#each category}}
+          <option value='#{category.title}'>#{category.title}</option>
+          {{/each}}
+          {{/if}}
+         {{!-- <option value="1">Technology</option>
          <option value="2">Health</option>
          <option value="4">Lifestyle</option>
          <option value="5">Food</option>
          <option value="6">Languages</option>
-         <option value="7">Miscellaneous</option>
+         <option value="7">Miscellaneous</option> --}}
       </select>
       <label>Category</label>
    </div>
-   <div class='input-field col s12'>
+   {{!-- <div class='input-field col s12'>
       <select required>
          <option value='' diabled selected>Post as</option>
          <option value='1'>Admin</option>
          <option value='2' disabled>Guest</option>
       </select>
-   </div>
+   </div> --}}
    <div class="input-field col s12">
       <textarea id="textarea-body" class="materialize-textarea" required></textarea>
       <label for="textarea-body">Write blog here</label>
    </div>
-   <button id='addpost-btn' class="blue btn waves-effect waves-light" type="submit" name="addpost">Post</button>
+   <button id='addpost-btn' class="blue btn waves-effect waves-light" type="submit" name="addblog">Post</button>
 </form>
