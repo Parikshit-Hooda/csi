@@ -41,8 +41,9 @@ app.engine('handlebars', exphbs({ defaultLayout: 'layout' }));
 app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //set static folder

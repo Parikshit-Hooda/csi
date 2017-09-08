@@ -15,10 +15,6 @@ router.get('/add', function(req, res, next) {
 
 
 router.post('/add', function(req, res, next) {
-    // console.log('1');
-    //console.log(req.body);
-    // console.log('1');
-    // console.log(req.body.addcategory);
     //get form values
     var addcategory = req.body.addcategory;
     //  console.log(req.body.addcategory);
@@ -45,31 +41,21 @@ router.post('/add', function(req, res, next) {
             if (err) {
                 console.log(err);
                 res.send('error saving category');
-                // function setTimeOut({ res.redirect('/addcategory') }, 3000)
             } else {
+                console.log('category saved');
                 console.log(category);
                 req.flash('success_msg', 'category saved successfully');
-                res.redirect('/add_category');
+                res.redirect('add_category');
             }
-            // });
         });
     }
 });
-// });
-//submit to db
-//   categories.insert({
-//     "title":title
-// }, function(err, category){
-//   if(err){
-//     res.send('there was an issue submitting the category');
-//   } else {
-//     req.flash('success', 'category submitted');
-//     res.location('/');
-//     res.redirect('/');
-//   }
-//  });
-//}
-// });
+
+router.get('/:id', (req, res, next) => {
+    Category.find({ _id: req.params.id }, (err, addcategory) => {
+        res.send(addcategory);
+    });
+});
 
 router.get('/show/:category', function(req, res, next) {
     // var db = req.db;
@@ -81,6 +67,5 @@ router.get('/show/:category', function(req, res, next) {
         });
     });
 });
-
 
 module.exports = router;
