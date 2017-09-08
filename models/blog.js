@@ -21,7 +21,7 @@ var BlogSchema = new Schema({
         type: Date,
         default: Date.now()
     },
-    category: {
+    addcategory: {
         type: String,
         required: true
     }

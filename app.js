@@ -13,8 +13,9 @@ var mongo = require('mongodb');
 var mongoose = require('mongoose');
 var logger = require('morgan');
 //var methodOverride = require('method-override');
-mongoose.connect('mongodb://localhost/csi');
+mongoose.connect('mongodb://localhost/csi', { useMongoClient: true });
 var db = mongoose.connection;
+mongoose.Promise = global.Promise;
 
 //routes
 var routes = require('./routes/index');
@@ -172,6 +173,4 @@ app.listen(app.get('port'), function() {
     console.log('server running on ' + app.get('port'));
 });
 
-
-
-// module.exports = app;
+module.exports = app;
