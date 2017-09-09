@@ -14,6 +14,9 @@ router.get('/', function(req, res) {
             res.send('error occured or no blog in database');
         } else {
             console.log(blogs);
+            // res.render('blog', {
+            //     "blogs": blogs
+            // });
             res.send(JSON.stringify(blogs));
         }
     });
@@ -21,14 +24,25 @@ router.get('/', function(req, res) {
 
 //addblog route
 router.get('/add', (req, res, next) => {
-    var collection = db.collection("categories");
-    collection.find({}, {}, function(e, categories) {
 
+    Category.
+    find({}).
+    populate('addcategory').
+    exec(function(err, category) {
         res.render('addblog', {
-            "title": "Add Category",
-            "categories": categories
+            "title": "Add Blog",
+            "category": category
         });
     });
+
+    // var collection = db.collection("categories");
+    // collection.find({}, {}, function(e, categories) {
+
+    //     res.render('addblog', {
+    //         "title": "Add Category",
+    //         "categories": categories
+    //     });
+    // });
 });
 
 //add post api

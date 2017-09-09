@@ -8,10 +8,15 @@ var Blog = require('../models/blog');
 
 
 router.get('/add', function(req, res, next) {
-    res.render('add_category', {
-        "title": "Add Category",
+    // var categories = db.collection("categories");
+    categories.find({}, {}, function(err, categore) {
+        res.render('add_category', {
+            "title": "Add Category",
+            "category": category
 
+        });
     });
+
 });
 
 
