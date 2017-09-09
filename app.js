@@ -42,7 +42,7 @@ app.set('view engine', 'handlebars');
 
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
+app.use(bodyParser.json({ type: 'application/x-www-form-urlencoded' }));
 // app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 

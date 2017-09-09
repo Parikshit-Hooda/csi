@@ -21,10 +21,14 @@ router.get('/', function(req, res) {
 
 //addblog route
 router.get('/add', (req, res, next) => {
-    res.render('addblog', {
-        "title": "Add Category",
+    var collection = db.collection("categories");
+    collection.find({}, {}, function(e, categories) {
 
-    })
+        res.render('addblog', {
+            "title": "Add Category",
+            "categories": categories
+        });
+    });
 });
 
 //add post api

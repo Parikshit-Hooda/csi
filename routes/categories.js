@@ -9,12 +9,15 @@ var Blog = require('../models/blog');
 
 router.get('/add', function(req, res, next) {
     res.render('add_category', {
-        "title": "Add Category"
+        "title": "Add Category",
+
     });
 });
 
 
+
 router.post('/add', function(req, res, next) {
+    console.log(req.body);
     //get form values
     var addcategory = req.body.addcategory;
     //  console.log(req.body.addcategory);
@@ -45,7 +48,7 @@ router.post('/add', function(req, res, next) {
                 console.log('category saved');
                 console.log(category);
                 req.flash('success_msg', 'category saved successfully');
-                res.redirect('add_category');
+                res.redirect('/');
             }
         });
     }

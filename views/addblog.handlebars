@@ -1,4 +1,4 @@
-<h1>{{title}}</h1>
+<h1>Add Blog</h1>
 <ul class='errors'>
    {{#if errors}}
    {{#each errors}}
@@ -15,10 +15,14 @@
       <select required>
          <option value="" disabled selected>Choose your option</option>          
           {{#if categories}}
-          {{#each category}}
-          <option value=#{category.addcategory}>#{category.addcategory}</option>
+          {{#each categories}}
+          <option value='{{category.addcategory}}'>{{category.addcategory}}</option>
           {{/each}}
+          {{else}}
+            <option value="" disabled>sorry no categories</option>
           {{/if}}
+          
+          <option value="test cat handlebars">test cat handlebars</option>
          {{!-- <option value="1">Technology</option>
          <option value="2">Health</option>
          <option value="4">Lifestyle</option>
