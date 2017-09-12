@@ -6,39 +6,20 @@
    {{/each}}
    {{/if}}
 </ul>
-<form method='POST' action='/routes/blogs/add'>
+<form method='post' action='add' type='application/x-www-form-urlencoded'>
    <div class="input-field col s6">
-      <input placeholder="Title" id="title" type="text" class="validate" required>
+      <input placeholder="Title" id="title" type="text" class="validate" name='title' required>
       <label for="title">Title of Blog</label>
    </div>
    <div class="input-field col s12">
       <select required>
          <option value="" disabled selected>Choose your option</option>          
-          {{#if categories}}
-          {{#each categories}}
-          <option value='{{category.addcategory}}'>{{category.addcategory}}</option>
+        {{#each cats}}
+          <option value='{{cat}}' name='{{cat}}'>{{cat}}</option>
           {{/each}}
-          {{else}}
-            <option value="" disabled>sorry no categories</option>
-          {{/if}}
-          
-          <option value="test cat handlebars">test cat handlebars</option>
-         {{!-- <option value="1">Technology</option>
-         <option value="2">Health</option>
-         <option value="4">Lifestyle</option>
-         <option value="5">Food</option>
-         <option value="6">Languages</option>
-         <option value="7">Miscellaneous</option> --}}
       </select>
-      <label>Category</label>
-   </div>
-   {{!-- <div class='input-field col s12'>
-      <select required>
-         <option value='' diabled selected>Post as</option>
-         <option value='1'>Admin</option>
-         <option value='2' disabled>Guest</option>
-      </select>
-   </div> --}}
+      <label for='cat'>
+          </div>
    <div class="input-field col s12">
       <textarea id="textarea-body" class="materialize-textarea" required></textarea>
       <label for="textarea-body">Write blog here</label>

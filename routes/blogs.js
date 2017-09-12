@@ -1,11 +1,12 @@
+//title body author addCategory date
+
 var express = require('express');
 var router = express.Router();
 // var mongo = require('mongodb');
 // var mongoose = require('mongoose');
 var Blog = require('../models/blog');
-var Category = require('../models/category');
+var Cat = require('../models/category');
 
-//get blog Homepage
 //get blog route api
 router.get('/', function(req, res) {
     console.log('getting all blogs');
@@ -23,41 +24,33 @@ router.get('/', function(req, res) {
 });
 
 //addblog route
-router.get('/add', (req, res, next) => {
-
-    Category.
-    find({}).
-    populate('addcategory').
-    exec(function(err, category) {
-        res.render('addblog', {
-            "title": "Add Blog",
-            "category": category
-        });
+router.get('/add', function(req, res, next) {
+    console.log('getting addblog page');
+    Cat.find({}, function(err, cats) {
+        if (err) console.log(err);
+        else {
+            // console.log('in the else part');
+            // console.log(cats);
+            res.render('addblog', { cats: cats });
+        }
     });
-
-    // var collection = db.collection("categories");
-    // collection.find({}, {}, function(e, categories) {
-
-    //     res.render('addblog', {
-    //         "title": "Add Category",
-    //         "categories": categories
-    //     });
-    // });
 });
+
 
 //add post api
 router.post('/add', function(req, res) {
+    console.log('posting to add post route');
     console.log(req.body);
     //get form values
     var title = req.body.title;
-    var category = req.body.category;
+    var cat = req.body.cat;
     var body = req.body.body;
-    var author = user;
+    var author = "anonymous";
     var date = Date.now();
 
     req.checkBody('title', 'Title is required').notEmpty();
     req.checkBody('body', 'Body field is required').notEmpty();
-    req.checkBody('category', 'Category field is required').notEmpty();
+    req.checkBody('cat', 'Category field is required').notEmpty();
     req.checkBody('author', 'Body field is required').notEmpty();
     req.checkBody('body', 'Body field is required').notEmpty();
     req.checkBody('category', 'Category field is required').notEmpty();
@@ -71,7 +64,7 @@ router.post('/add', function(req, res) {
     } else {
         var newBlog = new Blog({
             title: title,
-            category: category,
+            cat: cat,
             body: body,
             author: author,
             date: Date.now()
@@ -82,7 +75,7 @@ router.post('/add', function(req, res) {
             } else {
                 console.log(blog);
                 req.flash('success_msg', 'Your blog is saved.');
-                res.redirect('/blog');
+                res.redirect('/blogs');
             }
         });
     }
@@ -91,7 +84,7 @@ router.post('/add', function(req, res) {
 
 
 router.put('/:id', function(req, res) {
-    Blog.findOneAndUpdate({ _id: req.params.id }, { $set: { title: req.body.title, category: req.body.category, body: req.body.body, author: req.body.author } }, { upsert: true }, function(err, newBlog) {
+    Blog.findOneAndUpdate({ _id: req.params.id }, { $set: { title: req.body.title, cat: req.body.cat, body: req.body.body, author: req.body.author } }, { upsert: true }, function(err, newBlog) {
         if (err) {
             res.send('error updating');
         } else {

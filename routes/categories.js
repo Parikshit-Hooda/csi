@@ -3,34 +3,41 @@ var router = express.Router();
 var mongo = require('mongodb');
 //var mongoose = require('mongoose');
 var app_cat = require('../app');
-var Category = require('../models/category');
+var Cat = require('../models/category');
 var Blog = require('../models/blog');
+
+
+router.get('/', (req, res, next) => {
+    Cat.find({}, function(err, cats) {
+        if (err) throw err;
+        else res.send(cats);
+    });
+    // .exec(category => {
+    //     res.send(category);
+    // })
+    // .catch(err => {
+    //     res.send(err);
+    // })
+});
 
 
 router.get('/add', function(req, res, next) {
     // var categories = db.collection("categories");
-    categories.find({}, {}, function(err, categore) {
-        res.render('add_category', {
-            "title": "Add Category",
-            "category": category
-
-        });
+    res.render('add_category', {
+        "title": "Add Category"
     });
-
 });
-
-
 
 router.post('/add', function(req, res, next) {
     console.log(req.body);
     //get form values
-    var addcategory = req.body.addcategory;
+    var cat = req.body.cat;
     //  console.log(req.body.addcategory);
-    console.log(addcategory);
+    console.log(cat);
     // console.log('4');
 
     //form validation
-    req.checkBody('addcategory', 'Add Category field is required').notEmpty();
+    req.checkBody('cat', 'Add Category field is required').notEmpty();
 
     // console.log('3');
     //check errors
@@ -44,14 +51,14 @@ router.post('/add', function(req, res, next) {
         });
     } else {
         // console.log('2');
-        var newCategory = new Category({ addCategory: addcategory });
-        newCategory.save(newCategory, function(err, category) {
+        var newCategory = new Cat({ cat: cat });
+        newCategory.save(newCategory, function(err, cat) {
             if (err) {
                 console.log(err);
                 res.send('error saving category');
             } else {
                 console.log('category saved');
-                console.log(category);
+                console.log(cat);
                 req.flash('success_msg', 'category saved successfully');
                 res.redirect('/');
             }
@@ -60,17 +67,17 @@ router.post('/add', function(req, res, next) {
 });
 
 router.get('/:id', (req, res, next) => {
-    Category.find({ _id: req.params.id }, (err, addcategory) => {
-        res.send(addcategory);
+    Cat.find({ _id: req.params.id }, (err, cat) => {
+        res.send(cat);
     });
 });
 
 router.get('/show/:category', function(req, res, next) {
     // var db = req.db;
     // var posts = db.get('posts');
-    Blog.find({ category: req.params.category }, function(err, blogs) {
+    Blog.find({ cat: req.params.cat }, function(err, blogs) {
         res.render('index', {
-            "title": req.param.category,
+            "title": req.param.cat,
             "blogs": blogs
         });
     });
